@@ -25,13 +25,19 @@
       const key = keyInput.value;
       const errorMsg = document.getElementById("errorMsg");
 
-      if (key === "123456") {
+      // 清空错误信息
+      errorMsg.textContent = "";
+
+      if (key === "") {
+        // 如果没有输入密钥，显示提示信息
+        errorMsg.textContent = "请先输入密钥！";
+      } else if (key === "123456") {
+        // 如果密钥正确，显示欢迎页面
         document.getElementById("loginBox").classList.add("hidden");
         document.getElementById("welcomeBox").classList.remove("hidden");
       } else {
+        // 如果密钥错误，添加抖动效果并显示错误信息
         errorMsg.textContent = "密钥错误，请重试！";
-
-        // 添加抖动效果
         keyInput.classList.add("shake");
         setTimeout(() => {
           keyInput.classList.remove("shake");
