@@ -15,11 +15,17 @@
     <p id="errorMsg"></p>
   </div>
 
+  <!-- 确保 welcomeBox 默认是隐藏的 -->
   <div class="card hidden" id="welcomeBox">
     <div class="welcome">你好，世界！</div>
   </div>
 
   <script>
+    // 页面加载完成后，确保 welcomeBox 永远是隐藏的
+    window.onload = function() {
+      document.getElementById("welcomeBox").classList.add("hidden");
+    };
+
     function checkKey() {
       const keyInput = document.getElementById("keyInput");
       const key = keyInput.value;
