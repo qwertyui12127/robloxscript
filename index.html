@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>密钥登录页面</title>
+  <!-- 引入外部CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card" id="loginBox">
+    <h2>请输入密钥登录</h2>
+    <input type="password" id="keyInput" placeholder="输入密钥...">
+    <button onclick="checkKey()">登录</button>
+    <p id="errorMsg"></p>
+  </div>
+
+  <div class="hidden" id="welcomeBox">
+    <div class="welcome">你好，世界！</div>
+  </div>
+
+  <script>
+    function checkKey() {
+      const keyInput = document.getElementById("keyInput");
+      const key = keyInput.value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (key === "123456") {
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("welcomeBox").classList.remove("hidden");
+      } else {
+        errorMsg.textContent = "密钥错误，请重试！";
+
+        // 添加抖动效果
+        keyInput.classList.add("shake");
+        setTimeout(() => {
+          keyInput.classList.remove("shake");
+        }, 400);
+      }
+    }
+  </script>
+</body>
+</html>
