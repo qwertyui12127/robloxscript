@@ -69,11 +69,6 @@ button:hover {
   margin-top: 10px;
 }
 
-/* 隐藏元素 */
-.hidden {
-  display: none;
-}
-
 /* 欢迎页：全屏显示 */
 #welcomeBox {
   position: fixed;
@@ -116,4 +111,4 @@ button:hover {
 
 .shake {
   animation: shake 0.4s;
-}
+  }
