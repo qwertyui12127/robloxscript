@@ -24,8 +24,10 @@ loginForm.addEventListener('submit', function(e) {
     if (enteredPassword === correctKey) {
         // 登录成功
         showMessage('登录成功！', true);
-        // 这里可以添加重定向逻辑，例如：
-        // window.location.href = 'success.html';
+        // 重定向到仪表板页面
+        setTimeout(function() {
+            window.location.href = 'dashboard.html';
+        }, 1000);
     } else {
         // 登录失败
         showMessage('密码错误，请输入正确的6位数字密钥。', false);
