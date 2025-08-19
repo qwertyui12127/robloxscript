@@ -1,135 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>密钥登录页面</title>
-  <!-- 引入外部CSS -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密钥登录</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="card" id="loginBox">
-      <h2>请输入密钥登录</h2>
-      <input type="password" id="keyInput" placeholder="输入密钥...">
-      <button onclick="checkKey()">登录</button>
-      <p id="errorMsg"></p>
+    <div class="login-container">
+        <h2>密钥登录</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="password">请输入密钥:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    minlength="6" 
+                    maxlength="6" 
+                    pattern="[0-9]{6}"
+                    title="请输入6位数字密钥"
+                >
+            </div>
+            <button type="submit">登录</button>
+        </form>
+        <div id="message" class="message"></div>
     </div>
-
-    <!-- 欢迎界面，默认隐藏 -->
-    <div class="content-container hidden" id="welcomeBox">
-      <header class="header">
-        <h1>roblox脚本中心</h1>
-      </header>
-      <main class="main-content">
-        <!-- 添加一些占位内容以使页面可滚动 -->
-        <section>
-          <h2>脚本列表</h2>
-          <p>欢迎来到roblox脚本中心。这里是各种roblox脚本的集合。您可以浏览、下载和分享脚本。</p>
-        </section>
-        <section>
-          <h2>热门脚本</h2>
-          <ul>
-            <li>脚本1: 描述...</li>
-            <li>脚本2: 描述...</li>
-            <li>脚本3: 描述...</li>
-            <li>脚本4: 描述...</li>
-            <li>脚本5: 描述...</li>
-          </ul>
-        </section>
-        <section>
-          <h2>最新更新</h2>
-          <p>最近更新的脚本包括...</p>
-          <p>更多内容...</p>
-        </section>
-        <!-- 重复添加内容以确保可滚动 -->
-        <section>
-          <h2>脚本教程</h2>
-          <p>如何使用roblox脚本的教程...</p>
-          <p>步骤1...</p>
-          <p>步骤2...</p>
-          <p>步骤3...</p>
-        </section>
-        <section>
-          <h2>社区分享</h2>
-          <p>用户分享的脚本...</p>
-          <ul>
-            <li>分享1</li>
-            <li>分享2</li>
-            <li>分享3</li>
-            <li>分享4</li>
-            <li>分享5</li>
-            <li>分享6</li>
-            <li>分享7</li>
-            <li>分享8</li>
-            <li>分享9</li>
-            <li>分享10</li>
-          </ul>
-        </section>
-        <!-- 更多占位内容 -->
-        <section>
-          <h2>关于我们</h2>
-          <p>roblox脚本中心致力于提供最好的脚本资源。</p>
-          <p>联系我们...</p>
-          <p>更多信息...</p>
-          <p>额外内容以增加高度...</p>
-          <p>额外内容以增加高度...</p>
-          <p>额外内容以增加高度...</p>
-          <p>额外内容以增加高度...</p>
-          <p>额外内容以增加高度...</p>
-        </section>
-      </main>
-    </div>
-  </div>
-
-  <script>
-    // 页面加载完成后，确保 welcomeBox 是隐藏的
-    window.onload = function() {
-      document.getElementById("welcomeBox").classList.add("hidden");
-    };
-
-    function checkKey() {
-      const keyInput = document.getElementById("keyInput");
-      const key = keyInput.value;
-      const errorMsg = document.getElementById("errorMsg");
-
-      // 清空错误信息
-      errorMsg.textContent = "";
-
-      if (key === "") {
-        // 如果没有输入密钥，显示提示信息
-        errorMsg.textContent = "请先输入密钥！";
-      } else if (key === "123456") {
-        // 如果密钥正确，触发滑出滑入动画，并允许body滚动
-        const loginBox = document.getElementById("loginBox");
-        const welcomeBox = document.getElementById("welcomeBox");
-
-        // 先移除隐藏类，使welcomeBox可见但在右侧
-        welcomeBox.classList.remove("hidden");
-
-        // 延迟一小会儿以确保过渡生效，然后添加滑动类
-        setTimeout(() => {
-          loginBox.classList.add("slide-out-left");
-          welcomeBox.classList.add("slide-in-right");
-        }, 10);
-
-        // 动画完成后，隐藏loginBox并调整body
-        setTimeout(() => {
-          loginBox.classList.add("hidden");
-          document.body.classList.add("scrollable");
-          // 重置位置以防后续使用
-          loginBox.classList.remove("slide-out-left");
-          welcomeBox.classList.remove("slide-in-right");
-        }, 500); // 与过渡时间匹配
-      } else {
-        // 如果密钥错误，添加抖动效果并显示错误信息
-        errorMsg.textContent = "密钥错误，请重试！";
-        keyInput.classList.add("shake");
-        setTimeout(() => {
-          keyInput.classList.remove("shake");
-        }, 400);
-      }
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
